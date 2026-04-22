@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pokemon-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pokemon-app
+  template:
+    metadata:
+      labels:
+        app: pokemon-app
+    spec:
+      containers:
+        - name: pokemon-app
+          image: kailashbadu/pokemon-app:v1.1.1
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "5m"
+              memory: "10Mi"
+            limits:
+              cpu: "30m"
+              memory: "30Mi"
