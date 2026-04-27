@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-allapp
+  namespace: default
+  annotations:
+    alb.ingress.kubernetes.io/load-balancer-name: k8s-default-ingressa-604d0f834b
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/subnets: subnet-017570dad5fc3ed0e,subnet-02026da1c4e94f15c,subnet-0e1863a81e9355f1b
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/healthcheck-port: "80"
+    alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
+spec:
+  ingressClassName: alb
+  rules:
+    - host: pokemon.44.216.83.79.nip.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: pokemonapp
+                port:
+                  number: 80
+    - host: devops.44.216.83.79.nip.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: devopswebapp
+                port:
+                  number: 80
