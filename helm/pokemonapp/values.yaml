@@ -2,7 +2,7 @@ replicaCount: 1
 image:
   repository: kailashbadu/pokemon-app
   pullPolicy: Always
-  tag: v1.1.1
+  tag: v1.1.0
 
 resources:
   requests:
