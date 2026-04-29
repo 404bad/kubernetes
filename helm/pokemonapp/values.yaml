@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  repository: saksham1997/pokemon-app
+  repository: kailashbadu/pokemon-app
   pullPolicy: Always
   tag: v1.1.1
 
